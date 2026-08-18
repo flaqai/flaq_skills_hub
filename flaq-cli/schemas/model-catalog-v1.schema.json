@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flaq.ai/schemas/model-catalog-v1.schema.json",
+  "title": "Flaq CLI Model Catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "vendor", "mediaType", "operations"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "vendor": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "mediaType": { "enum": ["image", "video"] },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/operation" }
+    }
+  },
+  "$defs": {
+    "fieldNames": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "resourceLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "extensions": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z0-9]+$" } },
+        "itemDurationSeconds": { "$ref": "#/$defs/minMax" },
+        "maxItemBytes": { "type": "integer", "minimum": 1 },
+        "totalDurationSeconds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["max"],
+          "properties": { "max": { "type": "number", "exclusiveMinimum": 0 } }
+        }
+      }
+    },
+    "minMax": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number", "minimum": 0 },
+        "max": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["boolean", "number", "string", "string-array"] },
+        "values": { "type": "array", "minItems": 1, "items": { "type": ["boolean", "number", "string"] } },
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "minLength": { "type": "integer", "minimum": 0 },
+        "maxLength": { "type": "integer", "minimum": 0 },
+        "minItems": { "type": "integer", "minimum": 0 },
+        "maxItems": { "type": "integer", "minimum": 0 },
+        "format": { "enum": ["http-url", "media-input"] },
+        "default": { "type": ["boolean", "number", "string", "array"] },
+        "resourceLimits": { "$ref": "#/$defs/resourceLimits" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "allOrNone": { "type": "array", "items": { "type": "array", "minItems": 2, "items": { "type": "string" } } },
+        "atLeastOne": { "type": "array", "items": { "type": "array", "minItems": 2, "items": { "type": "string" } } },
+        "allowedPairs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fields", "values"],
+            "properties": {
+              "fields": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } },
+              "values": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "modelName", "requiredFields", "optionalFields", "prohibitedFields", "fields"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "modelName": { "type": "string", "minLength": 1 },
+        "requiredFields": { "$ref": "#/$defs/fieldNames" },
+        "optionalFields": { "$ref": "#/$defs/fieldNames" },
+        "prohibitedFields": { "$ref": "#/$defs/fieldNames" },
+        "fields": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+          "additionalProperties": { "$ref": "#/$defs/field" }
+        },
+        "constraints": { "$ref": "#/$defs/constraints" }
+      }
+    }
+  }
+}

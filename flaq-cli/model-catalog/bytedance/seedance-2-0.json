@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "seedance-2-0",
+  "vendor": "bytedance",
+  "mediaType": "video",
+  "operations": [
+    {
+      "id": "text-to-video",
+      "modelName": "seedance-v2.0-text-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio"],
+      "optionalFields": ["sound"],
+      "prohibitedFields": ["image_url", "image_end_url", "images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p", "1080p", "4k"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "sound": { "type": "boolean" }
+      }
+    },
+    {
+      "id": "image-to-video",
+      "modelName": "seedance-v2.0-image-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio", "image_url"],
+      "optionalFields": ["image_end_url", "sound"],
+      "prohibitedFields": ["images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p", "1080p", "4k"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "image_url": { "type": "string", "format": "media-input" },
+        "image_end_url": { "type": "string", "format": "media-input" },
+        "sound": { "type": "boolean" }
+      }
+    },
+    {
+      "id": "reference-to-video",
+      "modelName": "seedance-v2.0-reference-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio"],
+      "optionalFields": ["images", "videos", "audios", "sound"],
+      "prohibitedFields": ["image_url", "image_end_url"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p", "1080p", "4k"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "images": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 9 },
+        "videos": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 3, "resourceLimits": { "itemDurationSeconds": { "min": 2, "max": 15 } } },
+        "audios": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 3, "resourceLimits": { "itemDurationSeconds": { "min": 2, "max": 15 } } },
+        "sound": { "type": "boolean", "default": true }
+      },
+      "constraints": { "atLeastOne": [["images", "videos"]] }
+    },
+    {
+      "id": "fast-text-to-video",
+      "modelName": "seedance-v2.0-fast-text-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio"],
+      "optionalFields": ["sound"],
+      "prohibitedFields": ["image_url", "image_end_url", "images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "sound": { "type": "boolean" }
+      }
+    },
+    {
+      "id": "fast-image-to-video",
+      "modelName": "seedance-v2.0-fast-image-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio", "image_url"],
+      "optionalFields": ["image_end_url", "sound"],
+      "prohibitedFields": ["images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "image_url": { "type": "string", "format": "media-input" },
+        "image_end_url": { "type": "string", "format": "media-input" },
+        "sound": { "type": "boolean" }
+      }
+    },
+    {
+      "id": "fast-reference-to-video",
+      "modelName": "seedance-v2.0-fast-reference-to-video",
+      "requiredFields": ["prompt", "duration", "resolution", "aspect_ratio"],
+      "optionalFields": ["images", "videos", "audios", "sound"],
+      "prohibitedFields": ["image_url", "image_end_url"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "duration": { "type": "number", "minimum": 4, "maximum": 15 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "images": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 9 },
+        "videos": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 3, "resourceLimits": { "itemDurationSeconds": { "min": 2, "max": 15 } } },
+        "audios": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 3, "resourceLimits": { "itemDurationSeconds": { "min": 2, "max": 15 } } },
+        "sound": { "type": "boolean", "default": true }
+      },
+      "constraints": { "atLeastOne": [["images", "videos"]] }
+    }
+  ]
+}

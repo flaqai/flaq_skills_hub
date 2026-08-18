@@ -1,0 +1,10 @@
+export const APP_NAME = 'Flaq CLI';
+export const APP_VERSION = '0.2.0';
+export const MODEL_CATALOG_SCHEMA_VERSION = 1;
+export const DEFAULT_API_BASE_URL = 'https://api.flaq.ai';
+export const DEFAULT_HOST = '127.0.0.1';
+export const DEFAULT_PORT = 43127;
+export const KEYCHAIN_ACCOUNT = 'flaq-cli';
+export const KEYCHAIN_SERVICE = 'ai.flaq.cli';
+export const SESSION_HEADER = 'x-flaq-session';
+export const SESSION_COOKIE = 'flaq_session';

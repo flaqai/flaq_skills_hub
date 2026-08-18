@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "seedance-2-5",
+  "vendor": "bytedance",
+  "mediaType": "video",
+  "operations": [
+    {
+      "id": "text-to-video",
+      "modelName": "seedance-v2.5-text-to-video",
+      "requiredFields": ["prompt", "resolution", "duration", "aspect_ratio"],
+      "optionalFields": ["sound"],
+      "prohibitedFields": ["image_url", "image_end_url", "images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "duration": { "type": "number", "minimum": 4, "maximum": 30 },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "sound": { "type": "boolean", "default": true }
+      }
+    },
+    {
+      "id": "image-to-video",
+      "modelName": "seedance-v2.5-image-to-video",
+      "requiredFields": ["prompt", "resolution", "duration", "image_url"],
+      "optionalFields": ["image_end_url", "sound"],
+      "prohibitedFields": ["aspect_ratio", "images", "videos", "audios"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "duration": { "type": "number", "minimum": 4, "maximum": 30 },
+        "image_url": { "type": "string", "format": "media-input" },
+        "image_end_url": { "type": "string", "format": "media-input" },
+        "sound": { "type": "boolean", "default": true }
+      }
+    },
+    {
+      "id": "reference-to-video",
+      "modelName": "seedance-v2.5-reference-to-video",
+      "requiredFields": ["prompt", "resolution", "duration", "aspect_ratio", "videos"],
+      "optionalFields": ["images", "audios", "sound"],
+      "prohibitedFields": ["image_url", "image_end_url"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 5000 },
+        "resolution": { "type": "string", "values": ["480p", "720p"] },
+        "duration": { "type": "number", "minimum": 4, "maximum": 30 },
+        "aspect_ratio": { "type": "string", "values": ["21:9", "16:9", "9:16", "1:1", "4:3", "3:4"] },
+        "videos": { "type": "string-array", "format": "media-input", "minItems": 1, "maxItems": 10, "resourceLimits": { "extensions": ["mp4", "mov"], "itemDurationSeconds": { "min": 2, "max": 30 }, "totalDurationSeconds": { "max": 30 } } },
+        "images": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 30, "resourceLimits": { "extensions": ["jpeg", "jpg", "png", "webp", "bmp", "tiff", "gif"] } },
+        "audios": { "type": "string-array", "format": "media-input", "minItems": 0, "maxItems": 10, "resourceLimits": { "extensions": ["wav", "mp3", "mpeg", "m4a"], "itemDurationSeconds": { "min": 2, "max": 30 }, "maxItemBytes": 15728640, "totalDurationSeconds": { "max": 30 } } },
+        "sound": { "type": "boolean", "default": true }
+      }
+    }
+  ]
+}

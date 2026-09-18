@@ -322,7 +322,7 @@ flaq-cli/
 
 ### Build and copy to the Asset Skill
 
-By default, `flaq-cli` and `agent-skills` are sibling directories. Run:
+By default, the `flaq-cli` and `agent-skills` repositories are sibling directories, the CLI source is under `flaq-cli/flaq-cli/`, and the target skill is `agent-skills/.agents/skills/asset-skill/`. From the CLI source directory containing `package.json`, run:
 
 ```bash
 pnpm package:skill
@@ -336,7 +336,7 @@ The script:
 4. Creates a script-owned staging directory under the Skill's `tools/` directory and validates the executable and model catalog.
 5. Copies the package to `asset-skill/tools/flaq-cli/` and validates it again.
 
-If the Asset Skill is not in the default sibling location, pass its absolute directory:
+For a different checkout layout, pass the Asset Skill's absolute directory:
 
 ```bash
 zsh scripts/package-to-asset-skill.sh /absolute/path/to/asset-skill

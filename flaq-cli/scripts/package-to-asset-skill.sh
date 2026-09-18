@@ -6,7 +6,8 @@
 # validates the staged package, and copies it into asset-skill/tools/flaq-cli/.
 #
 # Default target:
-#   ../agent-skills/asset-skill
+#   ../../agent-skills/.agents/skills/asset-skill
+#   Relative to the CLI source directory (flaq-cli/flaq-cli/).
 #
 # Usage:
 #   zsh scripts/package-to-asset-skill.sh
@@ -19,7 +20,7 @@ set -euo pipefail
 
 SCRIPT_DIRECTORY=${0:A:h}
 PROJECT_ROOT=${SCRIPT_DIRECTORY:h}
-DEFAULT_ASSET_SKILL_ROOT=${PROJECT_ROOT:h}/agent-skills/asset-skill
+DEFAULT_ASSET_SKILL_ROOT=${PROJECT_ROOT:h:h}/agent-skills/.agents/skills/asset-skill
 ASSET_SKILL_ROOT=${1:-${DEFAULT_ASSET_SKILL_ROOT}}
 PACKAGE_PARENT=${ASSET_SKILL_ROOT}/tools
 PACKAGE_DIRECTORY=${PACKAGE_PARENT}/flaq-cli

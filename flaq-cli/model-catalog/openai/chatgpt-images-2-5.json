@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "chatgpt-images-2-5",
+  "vendor": "openai",
+  "mediaType": "image",
+  "operations": [
+    {
+      "id": "client-text-to-image",
+      "modelName": "chatgpt-images-2.5-client",
+      "requiredFields": ["prompt","width","height","resolution"],
+      "optionalFields": [],
+      "prohibitedFields": ["image_url_list","quality"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k"] }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    },
+    {
+      "id": "client-image-to-image",
+      "modelName": "chatgpt-images-2.5-edit-client",
+      "requiredFields": ["prompt","image_url_list","width","height","resolution"],
+      "optionalFields": [],
+      "prohibitedFields": ["quality"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "image_url_list": { "type": "string-array", "format": "media-input", "minItems": 1, "maxItems": 16 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k"] }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flare-text-to-image",
+      "modelName": "gpt-image-2.5-flare",
+      "requiredFields": ["prompt","width","height","resolution"],
+      "optionalFields": ["quality"],
+      "prohibitedFields": ["image_url_list"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k", "2k", "4k"] },
+        "quality": { "type": "string", "values": ["low", "medium", "high", "xhigh", "max"], "default": "medium" }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flare-image-to-image",
+      "modelName": "gpt-image-2.5-flare-edit",
+      "requiredFields": ["prompt","image_url_list","width","height","resolution"],
+      "optionalFields": ["quality"],
+      "prohibitedFields": [],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "image_url_list": { "type": "string-array", "format": "media-input", "minItems": 1, "maxItems": 16 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k", "2k", "4k"] },
+        "quality": { "type": "string", "values": ["low", "medium", "high", "xhigh", "max"], "default": "medium" }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sunburst-text-to-image",
+      "modelName": "gpt-image-2.5-sunburst",
+      "requiredFields": ["prompt","width","height","resolution"],
+      "optionalFields": ["quality"],
+      "prohibitedFields": ["image_url_list"],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k", "2k", "4k"] },
+        "quality": { "type": "string", "values": ["low", "medium", "high", "xhigh", "max"], "default": "medium" }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sunburst-image-to-image",
+      "modelName": "gpt-image-2.5-sunburst-edit",
+      "requiredFields": ["prompt","image_url_list","width","height","resolution"],
+      "optionalFields": ["quality"],
+      "prohibitedFields": [],
+      "fields": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "image_url_list": { "type": "string-array", "format": "media-input", "minItems": 1, "maxItems": 16 },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "resolution": { "type": "string", "values": ["1k", "2k", "4k"] },
+        "quality": { "type": "string", "values": ["low", "medium", "high", "xhigh", "max"], "default": "medium" }
+      },
+      "constraints": {
+        "allowedPairs": [
+          {
+            "fields": ["width", "height"],
+            "values": [[16, 9], [9, 16], [1, 1], [3, 2], [2, 3], [3, 4], [4, 3], [5, 4], [4, 5], [21, 9]]
+          }
+        ]
+      }
+    }
+  ]
+}

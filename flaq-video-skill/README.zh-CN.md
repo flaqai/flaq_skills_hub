@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 通过 AI 智能体使用 [Flaq AI](https://flaq.ai/) 生成、编辑视频和提升视频分辨率。本技能引导智能体发现模型、阅读最新 API 文档、发送带身份验证的请求、轮询任务并交付视频。
 
 智能体从[模型广场](https://flaq.ai/model-market/)、模型详情页和[官方文档](https://flaq.ai/docs/)读取模型能力及价格。技能不固定模型版本或参数限制。附带的 Python 辅助脚本负责页面提取、本地凭据管理、请求和下载，无需 Flaq CLI 或本地服务器。

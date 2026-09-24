@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 Gere, edite e aumente a resolução de vídeos com um agente de IA por meio da [Flaq AI](https://flaq.ai/). A skill orienta seu agente na descoberta de modelos, consulta à documentação atual da API, requisições autenticadas, consulta periódica de tarefas e entrega de vídeos.
 
 O agente consulta os recursos e preços dos modelos no [Catálogo de modelos](https://flaq.ai/model-market/), nas páginas de detalhes dos modelos e na [documentação oficial](https://flaq.ai/docs/). As versões dos modelos e os limites de parâmetros não são fixados na skill. Os auxiliares Python incluídos cuidam da extração de páginas, credenciais locais, requisições e downloads. Não é necessário usar Flaq CLI nem um servidor local.

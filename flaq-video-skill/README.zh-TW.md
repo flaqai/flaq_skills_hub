@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 透過 AI Agent 使用 [Flaq AI](https://flaq.ai/) 生成、編輯影片及提升影片解析度。本技能引導 Agent 探索模型、查閱最新 API 文件、發送經過驗證的請求、輪詢任務狀態，並取得影片。
 
 Agent 會從[模型廣場](https://flaq.ai/model-market/)、模型詳細頁及[官方文件](https://flaq.ai/docs/)讀取模型能力與價格。技能不會寫死模型版本或參數限制。隨附的 Python 輔助程式負責頁面擷取、本機憑證、請求與下載，無須 Flaq CLI 或本機伺服器。

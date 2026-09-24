@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 Buat, edit, dan tingkatkan resolusi video melalui [Flaq AI](https://flaq.ai/) bersama agen AI. Skill ini memandu agen Anda dalam menemukan model, membaca dokumentasi API terkini, mengirim permintaan terautentikasi, memeriksa status tugas secara berkala, dan menyerahkan video.
 
 Agen membaca kemampuan dan harga model dari [Katalog Model](https://flaq.ai/model-market/), halaman detail model, serta [dokumentasi resmi](https://flaq.ai/docs/). Versi model dan batas parameter tidak ditetapkan secara permanen di dalam skill. Skrip bantuan Python yang disertakan menangani ekstraksi halaman, kredensial lokal, permintaan, dan unduhan. Flaq CLI maupun server lokal tidak diperlukan.

@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 Создавайте, редактируйте и повышайте разрешение видео через [Flaq AI](https://flaq.ai/) с помощью ИИ-агента. Навык направляет агента при поиске моделей, чтении актуальной документации API, отправке аутентифицированных запросов, опросе статуса задач и получении видео.
 
 Агент получает сведения о возможностях и стоимости моделей из [каталога моделей](https://flaq.ai/model-market/), страниц моделей и [официальной документации](https://flaq.ai/docs/). Версии моделей и ограничения параметров не зафиксированы в навыке. Вспомогательные скрипты Python извлекают данные страниц, работают с локальными учётными данными, отправляют запросы и скачивают файлы. Flaq CLI и локальный сервер не требуются.

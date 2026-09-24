@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 AI 에이전트로 [Flaq AI](https://flaq.ai/)에서 동영상을 생성하고 편집하며 해상도를 높일 수 있습니다. 이 스킬은 모델 탐색, 최신 API 문서 확인, 인증된 요청, 작업 상태 폴링, 동영상 전달까지 에이전트를 안내합니다.
 
 에이전트는 [모델 마켓](https://flaq.ai/model-market/), 모델 상세 페이지, [공식 문서](https://flaq.ai/docs/)에서 모델 기능과 가격을 읽습니다. 모델 버전과 매개변수 제한은 스킬에 고정되어 있지 않습니다. 포함된 Python 보조 스크립트가 페이지 추출, 로컬 자격 증명, 요청, 다운로드를 처리합니다. Flaq CLI나 로컬 서버는 필요하지 않습니다.

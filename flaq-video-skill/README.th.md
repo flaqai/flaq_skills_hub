@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 ใช้เอเจนต์ AI เพื่อสร้าง แก้ไข และเพิ่มความละเอียดวิดีโอผ่าน [Flaq AI](https://flaq.ai/) สกิลนี้จะแนะนำเอเจนต์ตั้งแต่การค้นหาโมเดล การอ่านเอกสาร API ล่าสุด การส่งคำขอพร้อมการยืนยันตัวตน การตรวจสอบสถานะงานเป็นระยะ ไปจนถึงการส่งมอบวิดีโอ
 
 เอเจนต์อ่านความสามารถและราคาของโมเดลจาก[ตลาดโมเดล](https://flaq.ai/model-market/) หน้ารายละเอียดโมเดล และ[เอกสารทางการ](https://flaq.ai/docs/) โดยไม่ได้กำหนดเวอร์ชันโมเดลหรือข้อจำกัดพารามิเตอร์แบบตายตัวไว้ในสกิล สคริปต์ Python ที่ให้มาจัดการการดึงข้อมูลหน้าเว็บ ข้อมูลยืนยันตัวตนในเครื่อง คำขอ และการดาวน์โหลด ไม่จำเป็นต้องใช้ Flaq CLI หรือเซิร์ฟเวอร์ในเครื่อง

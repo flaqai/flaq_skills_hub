@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 أنشئ مقاطع الفيديو وعدّلها وارفع دقتها باستخدام وكيل ذكاء اصطناعي عبر [Flaq AI](https://flaq.ai/). ترشد هذه المهارة وكيلك خلال اكتشاف النماذج، وقراءة وثائق API الحالية، وإرسال الطلبات المصادق عليها، والاستعلام الدوري عن المهام، وتسليم الفيديو.
 
 يقرأ الوكيل قدرات النماذج وأسعارها من [سوق النماذج](https://flaq.ai/model-market/)، وصفحات تفاصيل النماذج، و[الوثائق الرسمية](https://flaq.ai/docs/). لا تُثبَّت إصدارات النماذج وحدود المعلمات داخل المهارة. تتولى أدوات Python المساعدة المرفقة استخراج محتوى الصفحات، وبيانات الاعتماد المحلية، والطلبات، والتنزيلات. لا حاجة إلى Flaq CLI أو خادم محلي.

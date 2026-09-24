@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 Tạo, chỉnh sửa và nâng độ phân giải video qua [Flaq AI](https://flaq.ai/) bằng tác nhân AI. Kỹ năng này hướng dẫn tác nhân tìm mô hình, đọc tài liệu API hiện hành, gửi yêu cầu có xác thực, thăm dò trạng thái tác vụ và lấy video.
 
 Tác nhân đọc khả năng và giá của mô hình từ [Chợ mô hình](https://flaq.ai/model-market/), trang chi tiết mô hình và [tài liệu chính thức](https://flaq.ai/docs/). Phiên bản mô hình và giới hạn tham số không được cố định trong kỹ năng. Các tập lệnh Python đi kèm xử lý việc trích xuất trang, thông tin xác thực cục bộ, yêu cầu và tải xuống. Không cần Flaq CLI hay máy chủ cục bộ.

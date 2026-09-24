@@ -1,5 +1,7 @@
 # Flaq Video Skill
 
+[English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português do Brasil](README.pt-BR.md) · [العربية](README.ar.md) · [Русский](README.ru.md) · [Bahasa Indonesia](README.id.md) · [Italiano](README.it.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md)
+
 AI エージェントを使い、[Flaq AI](https://flaq.ai/) で動画を生成・編集・高解像度化できます。このスキルは、モデルの検索、最新の API ドキュメントの確認、認証付きリクエスト、タスクのポーリング、動画の取得まで、エージェントを案内します。
 
 エージェントは[モデルマーケット](https://flaq.ai/model-market/)、モデル詳細ページ、[公式ドキュメント](https://flaq.ai/docs/)からモデルの機能と料金を読み取ります。モデルのバージョンやパラメーターの制限は、スキルに固定されていません。付属の Python ヘルパーがページの抽出、ローカル認証情報、リクエスト、ダウンロードを処理します。Flaq CLI やローカルサーバーは不要です。

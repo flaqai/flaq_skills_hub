@@ -4,6 +4,75 @@ Generate, edit, and upscale videos through [Flaq AI](https://flaq.ai/) with an A
 
 The agent reads model capabilities and pricing from the [Model Market](https://flaq.ai/model-market/), model detail pages, and [official Docs](https://flaq.ai/docs/). Model versions and parameter limits are not hardcoded in the skill. Included Python helpers handle page extraction, local credentials, requests, and downloads. Flaq CLI and a local server are not required.
 
+## Limitless video inspiration
+
+Browse the [scenario library](scenarios/index.md) for inputs, workflow guidance, original prompts, and video examples. Click a cover to watch the source video.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/2.mp4"><img src="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/2.webp" alt="Everyday outfit showcase" height="240"></a><br>
+      <strong>Everyday outfit showcase</strong><br>
+      <a href="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/2.mp4">Watch video</a> · <a href="scenarios/virtual-try-on.md#2-everyday-outfit-showcase">Prompt &amp; workflow</a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/2_2.mp4"><img src="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/2_1.webp" alt="Fashion outfit reveal" height="240"></a><br>
+      <strong>Fashion outfit reveal</strong><br>
+      <a href="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/2_2.mp4">Watch video</a> · <a href="scenarios/ugc-ads.md#2-fashion-outfit-reveal">Prompt &amp; workflow</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/1.mp4"><img src="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/1.webp" alt="Outfit showcase" height="240"></a><br>
+      <strong>Outfit showcase</strong><br>
+      <a href="https://cdn.heydream.im/heydream/v3/clothes_changer_video_generator/example/1.mp4">Watch video</a> · <a href="scenarios/virtual-try-on.md#1-outfit-showcase">Prompt &amp; workflow</a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://cdn.heydream.im/heydream/v2/ai_product_to_video/example/example1.4_video.mp4"><img src="https://cdn.heydream.im/heydream/v2/ai_product_to_video/example/example1.4_cover.webp" alt="Lipstick presentation" height="240"></a><br>
+      <strong>Lipstick presentation</strong><br>
+      <a href="https://cdn.heydream.im/heydream/v2/ai_product_to_video/example/example1.4_video.mp4">Watch video</a> · <a href="scenarios/product-showcase.md#2-lipstick-presentation">Prompt &amp; workflow</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/2.mp4"><img src="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/2.webp" alt="Summer travel vlog" height="240"></a><br>
+      <strong>Summer travel vlog</strong><br>
+      <a href="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/2.mp4">Watch video</a> · <a href="scenarios/image-to-video.md#2-summer-travel-vlog">Prompt &amp; workflow</a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/1.mp4"><img src="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/1.webp" alt="Morning lifestyle vlog" height="240"></a><br>
+      <strong>Morning lifestyle vlog</strong><br>
+      <a href="https://cdn.aitryon.art/home/ai_tryon/instagram_reel_generator/example/1.mp4">Watch video</a> · <a href="scenarios/image-to-video.md#3-morning-lifestyle-vlog">Prompt &amp; workflow</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://cdn.aitryon.art/home/ai_tryon/ai_ugc_maker/example/example2_video.mp4"><img src="https://cdn.aitryon.art/home/ai_tryon/ai_ugc_maker/example/example2_cover.webp" alt="Skincare creator ad" height="240"></a><br>
+      <strong>Skincare creator ad</strong><br>
+      <a href="https://cdn.aitryon.art/home/ai_tryon/ai_ugc_maker/example/example2_video.mp4">Watch video</a> · <a href="scenarios/ugc-ads.md#3-skincare-creator-ad">Prompt &amp; workflow</a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://cdn.aitryon.art/home/ai_tryon/ai_product_to_video/example_v2/example1_video.mp4"><img src="https://cdn.aitryon.art/home/ai_tryon/ai_product_to_video/example_v2/example1_cover.webp" alt="Bottle demonstration" height="240"></a><br>
+      <strong>Bottle demonstration</strong><br>
+      <a href="https://cdn.aitryon.art/home/ai_tryon/ai_product_to_video/example_v2/example1_video.mp4">Watch video</a> · <a href="scenarios/product-showcase.md#1-bottle-demonstration">Prompt &amp; workflow</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/1_2.mp4"><img src="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/1_1.webp" alt="Streetwear product ad" height="240"></a><br>
+      <strong>Streetwear product ad</strong><br>
+      <a href="https://cdn.ugcmaker.org/ugcmaker/ugc_ads_generator/example/1_2.mp4">Watch video</a> · <a href="scenarios/ugc-ads.md#1-streetwear-product-ad">Prompt &amp; workflow</a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://cdn.heydream.im/heydream/v3/image_to_video/example/2.mp4"><img src="https://cdn.heydream.im/heydream/v3/image_to_video/example/2.webp" alt="Cinematic rescue sequence" height="240"></a><br>
+      <strong>Cinematic rescue sequence</strong><br>
+      <a href="https://cdn.heydream.im/heydream/v3/image_to_video/example/2.mp4">Watch video</a> · <a href="scenarios/image-to-video.md#1-cinematic-rescue-sequence">Prompt &amp; workflow</a>
+    </td>
+  </tr>
+</table>
+
+These are existing examples from AITryOn, UGCMaker, and Heydream, not new generations made with this skill. Covers are previews, not verified source inputs. Each guide includes source links and expandable original prompts; adapted prompts are labeled separately. See [example provenance and layout references](scenarios/index.md#about-the-examples).
+
 ## Model selection
 
 Your explicit model choice takes priority. Otherwise, the agent prefers Seedance, then Wan, choosing the latest available version that meets your input, capability, and budget requirements. It compares other available models when neither family is suitable. It does not automatically switch models and submit another paid task after a failure.
@@ -18,7 +87,7 @@ Your explicit model choice takes priority. Otherwise, the agent prefers Seedance
 
 ## Install the skill
 
-Copy the entire `flaq-video-skill` directory into the skill directory supported by your agent. Use your agent's documented project-level or user-level skill location; the location depends on the host. Keep the directory name and its internal layout intact, including `scripts`, `references`, `templates`, and `requirements.txt`. Copying only `SKILL.md` is not sufficient.
+Copy the entire `flaq-video-skill` directory into the skill directory supported by your agent. Use your agent's documented project-level or user-level skill location; the location depends on the host. Keep the directory name and its internal layout intact, including `scripts`, `references`, `scenarios`, `templates`, and `requirements.txt`. Copying only `SKILL.md` is not sufficient.
 
 Refresh or reload skills as required by your agent. Confirm that it can find `flaq-video-skill` and resolve the relative files referenced by [SKILL.md](SKILL.md).
 
@@ -63,6 +132,24 @@ Ask the agent to use Flaq Video Skill and describe the result you want. For exam
 
 > Use Flaq Video Skill to check my existing task ID and download the video if it is ready. Do not create another task.
 
+### Outfit showcase
+
+> Use Flaq Video Skill to turn my completed try-on image into an outfit showcase. Keep the person and clothing consistent, with a gentle turn and a small step forward. Check duration and cost before generating.
+
+Read the [outfit guide](scenarios/virtual-try-on.md). This starts with a person already wearing the outfit.
+
+### UGC ad
+
+> Use Flaq Video Skill to make a portrait UGC ad from my product image. Open with a product detail, show the product in use, and end on a clear product shot. Use my supplied selling points and check audio support and cost first.
+
+Read the [UGC ad guide](scenarios/ugc-ads.md) for streetwear and outfit-reveal examples with original prompts.
+
+### Product demonstration
+
+> Use Flaq Video Skill to animate this photo of a person holding a bottle. Have them take a sip and present the bottle to the camera. Preserve its shape and label. Check the supported options and cost first.
+
+Read the [product guide](scenarios/product-showcase.md) for bottle and lipstick examples. For general scene animation, use the [image-to-video guide](scenarios/image-to-video.md).
+
 You can specify a model, link to its Flaq detail page, or let the agent follow the default priority. The agent reads the selected model's detailed Docs before preparing the request. Once you authorize the generation with the necessary options and cost scope established, it submits and records the task ID for follow-up.
 
 ## Check website access without a Key
@@ -82,6 +169,7 @@ This reads a public page without credentials or a paid API call. The script extr
 | [SKILL.md](SKILL.md) | Agent instructions, model priority, and end-to-end workflow |
 | [references/scripts.md](references/scripts.md) | Exact setup, request, polling, upload, and download commands |
 | [references/model-discovery.md](references/model-discovery.md) | Reading specifications and reconciling them with detailed Docs |
+| [scenarios/index.md](scenarios/index.md) | Scenario routing, input requirements, workflows, prompts, and source video galleries |
 | `scripts/credentials.py` | Configure, inspect, and clear local credentials |
 | `scripts/read_page.py` | Extract information from Flaq public pages |
 | `scripts/video_request.py` | Submit, query, wait for, and download video tasks |

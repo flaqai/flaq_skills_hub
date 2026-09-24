@@ -11,6 +11,8 @@ Read current model information from Flaq's public website and call its video API
 
 Read [references/scripts.md](references/scripts.md) on first use or when you need exact commands. The included Python scripts handle deterministic operations; current official pages and documentation determine model selection and parameters.
 
+For outfit showcases from existing try-on images, UGC ads, product demonstrations, or image animation, first read [scenarios/index.md](scenarios/index.md) and only the matching guide. It provides required inputs, capability checks, and prompts with source videos. Apply the model priority and API verification below; gallery examples do not define API schemas or authorize generation. The outfit workflow starts with a completed outfit image, not separate person and garment images.
+
 1. Run `python3 scripts/read_page.py 'https://flaq.ai/model-market/'` to discover model links, or read the detail page supplied by the user directly. If no model is specified, follow the Seedance → Wan priority below.
 2. Read the selected detail page and inspect `public_spec`, `code_blocks`, and `docs_links`. Use the same script to read the actual documentation link, preserving its `/docs?page=...` query. Do not guess routes. Increase `--text-limit` if text is truncated; use the host browser for dynamic content.
 3. Run `python3 scripts/credentials.py status`. If no Key is configured, ask the user to run `python3 scripts/credentials.py set` in their own terminal. They enter it once, and it is saved in the system credential store. Never request, print, or copy the Key into the conversation.

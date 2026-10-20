@@ -54,6 +54,7 @@ For each selected candidate, cross-check the structured specification, API examp
 - The exact `model_name` and operation capabilities.
 - Required inputs, supported optional fields, types, enums, ranges, and constraints between fields.
 - Counts, formats, sizes, and duration limits for images, videos, audio, and other inputs.
+- Minimum reference requirements for the exact model ID: distinguish a required video, at least one image or video, and fully optional references. Do not infer required inputs from the `reference-to-video` name, an example containing videos, or another version's constraints. When the selected model explicitly permits them, allow image-only, audio-only, and no-reference requests without asking for extra media.
 - Resolution, aspect ratio, output duration, audio, and other options relevant to the user.
 - Pricing and billing units for the chosen configuration. A listing's starting price is not the final task price; explain when matching rules are insufficient for an accurate estimate.
 

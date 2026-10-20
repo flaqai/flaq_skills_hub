@@ -48,6 +48,12 @@ These common differences are interpretation guidance, not a mapping configuratio
 
 Values in an API example usually describe one request, not every allowed value or which fields are mandatory. Use the operation's official documentation for complete parameter restrictions.
 
+## Reference input requirements
+
+Check each media field's required status and minimum count separately, then check any combined minimum. Optional `images`, `videos`, and `audios` fields do not by themselves prove that an empty-reference request is allowed: the model may still require at least one image or video. Conversely, when the exact model explicitly allows no references or audio-only input, do not impose a minimum inherited from another version or require a video merely because the example includes one.
+
+Use only the user's supplied reference types and omit unused optional media fields unless the API documents another representation. A recommendation to use text-to-video without references does not make an explicitly supported no-reference request invalid or authorize switching the user's chosen model.
+
 ## Pricing rules
 
 Each `pricing` entry may contain `when` conditions, `price`, `originalPrice`, and `discount`. Use a rule for estimates only when it matches the requested resolution, audio, reference video, and other conditions. Distinguish per-second, per-generation, and input/output-duration billing. Do not confuse the lowest price with the chosen configuration's price or discount an already discounted price again. Missing pricing data does not mean the task is free.

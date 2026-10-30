@@ -102,7 +102,7 @@ Your explicit model choice takes priority. Otherwise, the agent prefers Seedance
 
 ## Requirements
 
-- An agent that supports `SKILL.md` skills and can read webpages, run Python, and access local files. A browser tool helps with dynamic or login-protected pages.
+- An agent that supports `SKILL.md` skills and can read URLs through HTTP, run Python, and access local files. Normal operation does not require browser or desktop automation.
 - Python 3.10 or newer, with the packages in [requirements.txt](requirements.txt).
 - Network access to Flaq's website and API, and to the returned video URLs.
 - A Flaq account and Client Key with the permissions and available balance needed for your chosen model.
@@ -185,6 +185,15 @@ python3 scripts/read_page.py 'https://flaq.ai/model-market/'
 
 This reads a public page without credentials or a paid API call. The script extracts model links, documentation links, page text, code examples, and public model specifications where present. The agent follows actual detail-page and Docs links rather than guessing URLs.
 
+For direct Docs Markdown and model market filtering/pagination, use:
+
+```sh
+python3 scripts/read_page.py 'ACTUAL_DOCS_URL_WITH_PAGE_QUERY' --docs-json
+python3 scripts/read_page.py --market --media-type video --page-num 1 --page-size 20
+```
+
+These public lookups do not require a Key. See [script usage](references/scripts.md) for output fields and options. The agent uses HTTP and scripts by default, including for first-time generation. If essential information truly requires computer use, it must explain the blocker and proposed actions, then ask for permission for that operation only or similar necessary operations in the current conversation; you may decline. Permission does not make computer use the default, carry over to a new conversation, or authorize paid generation.
+
 ## Files and further reading
 
 | File or directory | Purpose |
@@ -194,7 +203,7 @@ This reads a public page without credentials or a paid API call. The script extr
 | [references/model-discovery.md](references/model-discovery.md) | Reading specifications and reconciling them with detailed Docs |
 | [scenarios/index.md](scenarios/index.md) | Scenario routing, input requirements, workflows, prompts, and source video galleries |
 | `scripts/credentials.py` | Configure, inspect, and clear local credentials |
-| `scripts/read_page.py` | Extract information from Flaq public pages |
+| `scripts/read_page.py` | Extract public HTML, read Docs Markdown, and filter/paginate the model market |
 | `scripts/video_request.py` | Submit, query, wait for, and download video tasks |
 | `templates/` | Generic request and local-file templates to fill from current Docs |
 | `tests/` | Offline behavior checks using isolated test inputs |
@@ -210,7 +219,7 @@ Request templates are starting structures, not ready-to-submit examples. Keep te
 | The credential store is unavailable | Check system access and unlock it. On Linux, ensure Secret Service is running in the current user session. The scripts do not fall back to plaintext storage. |
 | `status` succeeds but generation fails | Local configuration does not prove remote access. Check Key permissions, balance, model availability, and request parameters. |
 | A saved Key was cleared but requests still authenticate | Check whether `FLAQ_CLIENT_KEY` is still set in the agent's environment. |
-| Model details or Docs are incomplete | Follow the actual documentation link, increase the text limit if truncated, or use the agent's browser for dynamic content. Do not guess missing parameters. |
+| Model details or Docs are incomplete | Read the full HTML or use `--docs-json` with the actual Docs link; increase the text limit if truncated. Use `--market` for catalog pagination. Report unresolved missing information; do not guess parameters or automatically switch to computer use. |
 | Waiting times out | Keep the task ID and query it again. A local waiting timeout does not mean remote generation failed or was cancelled. |
 | Submission ends with a network error | Check whether Flaq created a task before submitting again to avoid duplicate charges. |
 | A download fails | Retain the result URL, check the output directory and file name, and inspect the reported error. Existing files are never overwritten. |

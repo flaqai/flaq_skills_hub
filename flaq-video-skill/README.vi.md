@@ -102,7 +102,7 @@ Mô hình bạn chỉ định rõ ràng được ưu tiên cao nhất. Nếu kh�
 
 ## Yêu cầu
 
-- Tác nhân hỗ trợ kỹ năng `SKILL.md`, có thể đọc trang web, chạy Python và truy cập tệp cục bộ. Công cụ trình duyệt hữu ích với trang động hoặc trang yêu cầu đăng nhập.
+- Tác nhân hỗ trợ kỹ năng `SKILL.md`, có thể đọc URL qua HTTP, chạy Python và truy cập tệp cục bộ. Việc sử dụng thông thường không cần tự động hóa trình duyệt hoặc màn hình máy tính.
 - Python 3.10 trở lên cùng các gói trong [requirements.txt](requirements.txt).
 - Kết nối mạng truy cập được trang web và API của Flaq cũng như các URL video được trả về.
 - Tài khoản Flaq và Client Key có quyền truy cập cùng số dư khả dụng cần thiết cho mô hình đã chọn.
@@ -210,7 +210,7 @@ Mẫu yêu cầu là cấu trúc khởi đầu, không phải ví dụ có thể
 | Kho thông tin xác thực không khả dụng | Kiểm tra quyền truy cập hệ thống và mở khóa kho. Trên Linux, bảo đảm Secret Service đang chạy trong phiên người dùng hiện tại. Các tập lệnh không chuyển sang lưu dạng văn bản thuần. |
 | `status` thành công nhưng tạo video thất bại | Cấu hình cục bộ không chứng minh được quyền truy cập từ xa. Kiểm tra quyền của Key, số dư, khả năng sử dụng mô hình và tham số yêu cầu. |
 | Đã xóa Key lưu trữ nhưng yêu cầu vẫn xác thực được | Kiểm tra xem `FLAQ_CLIENT_KEY` còn được đặt trong môi trường của tác nhân hay không. |
-| Chi tiết mô hình hoặc tài liệu chưa đầy đủ | Theo liên kết tài liệu thực tế, tăng giới hạn văn bản nếu bị cắt hoặc dùng trình duyệt của tác nhân cho nội dung động. Không đoán tham số còn thiếu. |
+| Chi tiết mô hình hoặc tài liệu chưa đầy đủ | Đọc HTML đầy đủ hoặc dùng `--docs-json` với liên kết tài liệu thực tế. Tăng giới hạn văn bản nếu bị cắt và dùng `--market` để đọc các trang của danh mục. Báo rõ thông tin vẫn còn thiếu, không đoán tham số hay tự động chuyển sang điều khiển máy tính. Chỉ khi thực sự cần thiết, hãy giải thích trở ngại và các thao tác dự kiến theo [SKILL.md](SKILL.md#tool-choice-and-computer-use-authorization), rồi xin phép cho riêng thao tác đó hoặc cho các thao tác tương tự cần thiết trong cuộc trò chuyện này. Người dùng cũng có thể từ chối. Dù được cho phép, vẫn ưu tiên HTTP và tập lệnh. |
 | Hết thời gian chờ | Giữ lại ID tác vụ và truy vấn lại. Hết thời gian chờ cục bộ không có nghĩa là việc tạo từ xa đã thất bại hoặc bị hủy. |
 | Gửi tác vụ kết thúc với lỗi mạng | Kiểm tra xem Flaq đã tạo tác vụ hay chưa trước khi gửi lại để tránh bị tính phí trùng. |
 | Tải xuống thất bại | Giữ lại URL kết quả, kiểm tra thư mục đầu ra, tên tệp và lỗi được báo. Tệp hiện có không bao giờ bị ghi đè. |

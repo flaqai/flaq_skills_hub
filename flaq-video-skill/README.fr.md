@@ -102,7 +102,7 @@ Le modèle que vous choisissez explicitement est prioritaire. Sinon, l’agent p
 
 ## Prérequis
 
-- Un agent compatible avec les compétences `SKILL.md`, capable de lire des pages web, d’exécuter Python et d’accéder aux fichiers locaux. Un outil de navigation est utile pour les pages dynamiques ou nécessitant une connexion.
+- Un agent compatible avec les compétences `SKILL.md`, capable de lire des URL via HTTP, d’exécuter Python et d’accéder aux fichiers locaux. L’utilisation normale ne nécessite aucune automatisation du navigateur ou du bureau.
 - Python 3.10 ou ultérieur, avec les paquets de [requirements.txt](requirements.txt).
 - Un accès réseau au site et à l’API de Flaq, ainsi qu’aux URL des vidéos renvoyées.
 - Un compte Flaq et une Client Key disposant des autorisations et du solde nécessaires au modèle choisi.
@@ -210,7 +210,7 @@ Les modèles de requête sont des structures de départ, pas des exemples prêts
 | Le gestionnaire d’identifiants est indisponible | Vérifiez l’accès au système et déverrouillez le gestionnaire. Sous Linux, assurez-vous que Secret Service fonctionne dans la session de l’utilisateur actuel. Les scripts n’utilisent pas le stockage en texte brut en solution de repli. |
 | `status` réussit, mais la génération échoue | La configuration locale ne garantit pas l’accès distant. Vérifiez les autorisations de la clé, le solde, la disponibilité du modèle et les paramètres de la requête. |
 | La clé enregistrée a été supprimée, mais les requêtes restent authentifiées | Vérifiez si `FLAQ_CLIENT_KEY` est toujours définie dans l’environnement de l’agent. |
-| Les détails du modèle ou la documentation sont incomplets | Suivez le lien réel de la documentation, augmentez la limite de texte si le contenu est tronqué ou utilisez le navigateur de l’agent pour le contenu dynamique. Ne devinez pas les paramètres manquants. |
+| Les détails du modèle ou la documentation sont incomplets | Lisez le HTML complet ou utilisez `--docs-json` avec le lien réel de la documentation. Augmentez la limite de texte si le contenu est tronqué et utilisez `--market` pour la pagination du catalogue. Signalez les informations toujours manquantes, sans deviner les paramètres ni passer automatiquement au contrôle de l’ordinateur. Uniquement si ce contrôle est réellement nécessaire, expliquez le blocage et les actions prévues conformément à [SKILL.md](SKILL.md#tool-choice-and-computer-use-authorization), puis demandez une autorisation limitée à cette opération ou aux opérations similaires nécessaires dans cette conversation. L’utilisateur peut aussi refuser. Même après autorisation, privilégiez HTTP et les scripts. |
 | Le délai d’attente est dépassé | Conservez l’ID de la tâche et consultez-la à nouveau. Un délai d’attente local dépassé ne signifie pas que la génération distante a échoué ou a été annulée. |
 | L’envoi se termine par une erreur réseau | Avant de soumettre à nouveau la requête, vérifiez si Flaq a créé une tâche afin d’éviter une double facturation. |
 | Un téléchargement échoue | Conservez l’URL du résultat, vérifiez le répertoire de sortie et le nom du fichier, puis examinez l’erreur signalée. Les fichiers existants ne sont jamais écrasés. |

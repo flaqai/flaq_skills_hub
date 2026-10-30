@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 import credentials
 from common import SkillError, https_url, run
-from read_page import PageParser, fetch_page
+from read_page import PageParser, fetch_page, read_docs, read_market
 from video_request import api_request, download, main, multipart, validate_request
 
 
@@ -56,6 +56,64 @@ class ScriptsTest(unittest.TestCase):
             self.assertTrue(credentials.status()['configured'])
             self.assertNotIn('test-canary', json.dumps(credentials.status()))
             stored.assert_not_called()
+
+    def test_docs_json_preserves_page_locale_and_reports_truncation(self):
+        client = MagicMock()
+        response = self.response()
+        response.headers = {'Content-Type': 'application/json'}
+        response.iter_content.return_value = [json.dumps({'content': '# Full document', 'restrictedFallback': False}).encode()]
+        client.get.return_value = response
+        result = read_docs('https://flaq.ai/zh/docs/?page=api%2Fexample', client, 6)
+        self.assertEqual(result['page'], 'api/example')
+        self.assertEqual(result['locale'], 'zh')
+        self.assertEqual(result['content'], '# Full')
+        self.assertTrue(result['content_truncated'])
+        self.assertEqual(client.get.call_args.args[0], 'https://flaq.ai/api/docs/?page=api%2Fexample&locale=zh')
+        self.assertNotIn('headers', client.get.call_args.kwargs)
+
+    def test_docs_restrictions_and_missing_content_are_not_success(self):
+        for body, code in [({'content': '', 'restrictedFallback': True}, 'DOCS_RESTRICTED'),
+                           ({'content': ''}, 'DOCS_CONTENT_MISSING')]:
+            with patch('read_page.fetch_json', return_value=('https://flaq.ai/api/docs/', body)):
+                with self.assertRaises(SkillError) as error:
+                    read_docs('https://flaq.ai/docs/?page=api/example', MagicMock(), 30000)
+                self.assertEqual(error.exception.code, code)
+        client = MagicMock()
+        with self.assertRaises(SkillError):
+            read_docs('https://flaq.ai/models/vendor/model/', client, 30000)
+        client.get.assert_not_called()
+
+    def test_market_lookup_posts_filters_and_preserves_pagination(self):
+        client = MagicMock()
+        response = self.response()
+        response.headers = {'Content-Type': 'application/json'}
+        records = [{'models': ['example-model'], 'provider': 'example'}]
+        response.iter_content.return_value = [json.dumps({'code': 200, 'data': {'records': records, 'total': 23}}).encode()]
+        client.post.return_value = response
+        result = read_market(client, 2, 20, ['video'], ['example'])
+        self.assertEqual(result['records'], records)
+        self.assertEqual(result['total'], 23)
+        self.assertEqual(client.post.call_args.args[0], 'https://flaq.ai/api/model-market/')
+        self.assertEqual(client.post.call_args.kwargs['json'], {'pageNum': 2, 'pageSize': 20, 'media_type': ['video'], 'provider': ['example']})
+        self.assertFalse(client.post.call_args.kwargs['allow_redirects'])
+        self.assertNotIn('headers', client.post.call_args.kwargs)
+
+    def test_market_lookup_rejects_redirect_failure_and_bad_pagination(self):
+        client = MagicMock()
+        client.post.return_value = self.response(status=307)
+        with self.assertRaises(SkillError) as error:
+            read_market(client, 1, 20)
+        self.assertEqual(error.exception.code, 'PUBLIC_API_REDIRECT')
+        self.assertEqual(client.post.call_count, 1)
+        for body, code in [({'code': 500}, 'MARKET_LOOKUP_FAILED'),
+                           ({'code': 200, 'data': {'records': []}}, 'INVALID_MARKET_RESPONSE')]:
+            with patch('read_page.fetch_json', return_value=('https://flaq.ai/api/model-market/', body)):
+                with self.assertRaises(SkillError) as error:
+                    read_market(client, 1, 20)
+                self.assertEqual(error.exception.code, code)
+        with self.assertRaises(SkillError) as error:
+            read_market(client, 0, 20)
+        self.assertEqual(error.exception.code, 'INVALID_PAGINATION')
 
     def test_saved_key_can_be_read_without_environment_and_failure_is_sanitized(self):
         backend = MagicMock()

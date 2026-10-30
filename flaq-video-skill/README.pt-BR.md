@@ -102,7 +102,7 @@ Sua escolha explícita de modelo tem prioridade. Caso contrário, o agente prefe
 
 ## Requisitos
 
-- Um agente compatível com skills `SKILL.md` que consiga ler páginas da web, executar Python e acessar arquivos locais. Uma ferramenta de navegador ajuda com páginas dinâmicas ou que exigem login.
+- Um agente compatível com skills `SKILL.md` que consiga ler URLs via HTTP, executar Python e acessar arquivos locais. O uso normal não exige automação do navegador ou da área de trabalho.
 - Python 3.10 ou superior, com os pacotes de [requirements.txt](requirements.txt).
 - Acesso de rede ao site e à API da Flaq, além das URLs de vídeo retornadas.
 - Uma conta Flaq e uma Client Key com as permissões e o saldo disponível necessários para o modelo escolhido.
@@ -210,7 +210,7 @@ Os modelos de requisição são estruturas iniciais, não exemplos prontos para 
 | O armazenamento de credenciais está indisponível | Verifique o acesso ao sistema e desbloqueie-o. No Linux, certifique-se de que o Secret Service esteja em execução na sessão do usuário atual. Os scripts não recorrem ao armazenamento em texto simples. |
 | `status` funciona, mas a geração falha | A configuração local não comprova o acesso remoto. Verifique as permissões da Key, o saldo, a disponibilidade do modelo e os parâmetros da requisição. |
 | Uma Key salva foi removida, mas as requisições continuam autenticadas | Verifique se `FLAQ_CLIENT_KEY` ainda está definida no ambiente do agente. |
-| Os detalhes do modelo ou a documentação estão incompletos | Siga o link real da documentação, aumente o limite de texto se houver truncamento ou use o navegador do agente para conteúdo dinâmico. Não adivinhe parâmetros ausentes. |
+| Os detalhes do modelo ou a documentação estão incompletos | Leia o HTML completo ou use `--docs-json` com o link real da documentação. Aumente o limite de texto se houver truncamento e use `--market` para a paginação do catálogo. Informe quais dados continuam faltando, sem adivinhar parâmetros nem passar automaticamente ao controle do computador. Somente se isso for realmente necessário, explique o impedimento e as ações previstas conforme [SKILL.md](SKILL.md#tool-choice-and-computer-use-authorization) e peça autorização apenas para essa operação ou para operações semelhantes necessárias nesta conversa. O usuário também pode recusar. Mesmo com autorização, continue priorizando HTTP e scripts. |
 | O tempo de espera se esgota | Guarde o ID da tarefa e consulte-a novamente. Um tempo limite de espera local não significa que a geração remota falhou ou foi cancelada. |
 | O envio termina com um erro de rede | Antes de enviar novamente, verifique se a Flaq criou uma tarefa para evitar cobranças duplicadas. |
 | Um download falha | Guarde a URL do resultado, verifique o diretório de saída e o nome do arquivo e examine o erro informado. Arquivos existentes nunca são sobrescritos. |

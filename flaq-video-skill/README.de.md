@@ -102,7 +102,7 @@ Deine ausdrückliche Modellwahl hat Vorrang. Andernfalls bevorzugt der Agent See
 
 ## Voraussetzungen
 
-- Ein Agent, der `SKILL.md`-Skills unterstützt, Webseiten lesen, Python ausführen und auf lokale Dateien zugreifen kann. Ein Browserwerkzeug hilft bei dynamischen Seiten oder Seiten, die eine Anmeldung erfordern.
+- Ein Agent, der `SKILL.md`-Skills unterstützt, URLs per HTTP lesen, Python ausführen und auf lokale Dateien zugreifen kann. Im normalen Betrieb ist keine Browser- oder Desktop-Automatisierung erforderlich.
 - Python 3.10 oder neuer mit den Paketen aus [requirements.txt](requirements.txt).
 - Netzwerkzugriff auf die Flaq-Website und -API sowie die zurückgegebenen Video-URLs.
 - Ein Flaq-Konto und ein Client Key mit den erforderlichen Berechtigungen und genügend Guthaben für das gewählte Modell.
@@ -210,7 +210,7 @@ Anfragevorlagen sind Ausgangsstrukturen, keine direkt einreichbaren Beispiele. L
 | Der Zugangsspeicher ist nicht verfügbar | Prüfe den Systemzugriff und entsperre den Speicher. Stelle unter Linux sicher, dass Secret Service in der aktuellen Benutzersitzung läuft. Die Skripte weichen nicht auf Klartextspeicherung aus. |
 | `status` ist erfolgreich, aber die Generierung schlägt fehl | Eine lokale Konfiguration belegt keinen Remotezugriff. Prüfe Schlüsselberechtigungen, Guthaben, Modellverfügbarkeit und Anfrageparameter. |
 | Ein gespeicherter Schlüssel wurde gelöscht, aber Anfragen werden weiterhin authentifiziert | Prüfe, ob `FLAQ_CLIENT_KEY` in der Umgebung des Agenten noch gesetzt ist. |
-| Modelldetails oder Dokumentation sind unvollständig | Folge dem tatsächlichen Dokumentationslink, erhöhe bei abgeschnittenem Text das Textlimit oder verwende für dynamische Inhalte den Browser des Agenten. Errate keine fehlenden Parameter. |
+| Modelldetails oder Dokumentation sind unvollständig | Lies das vollständige HTML oder verwende `--docs-json` mit dem tatsächlichen Dokumentationslink. Erhöhe bei abgeschnittenem Text das Textlimit und verwende `--market` für die Seitennavigation im Modellkatalog. Melde weiterhin fehlende Informationen; errate keine Parameter und wechsle nicht automatisch zur Computerbedienung. Erkläre nur bei tatsächlicher Notwendigkeit gemäß [SKILL.md](SKILL.md#tool-choice-and-computer-use-authorization) das Hindernis und die geplanten Aktionen und frage nach Erlaubnis für diese einzelne Aktion oder für ähnliche notwendige Aktionen innerhalb dieses Gesprächs. Der Nutzer kann auch ablehnen. Bevorzuge auch nach erteilter Erlaubnis weiterhin HTTP und Skripte. |
 | Zeitüberschreitung beim Warten | Bewahre die Aufgaben-ID auf und frage die Aufgabe erneut ab. Eine lokale Zeitüberschreitung bedeutet nicht, dass die Generierung auf dem Server fehlgeschlagen ist oder abgebrochen wurde. |
 | Die Einreichung endet mit einem Netzwerkfehler | Prüfe vor einer erneuten Einreichung, ob Flaq bereits eine Aufgabe erstellt hat, um doppelte Kosten zu vermeiden. |
 | Ein Download schlägt fehl | Bewahre die Ergebnis-URL auf, prüfe das Ausgabeverzeichnis und den Dateinamen und sieh dir den gemeldeten Fehler an. Vorhandene Dateien werden niemals überschrieben. |

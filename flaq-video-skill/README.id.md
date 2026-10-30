@@ -102,7 +102,7 @@ Model yang Anda tentukan secara eksplisit mendapat prioritas tertinggi. Jika tid
 
 ## Persyaratan
 
-- Agen yang mendukung skill `SKILL.md` dan dapat membaca halaman web, menjalankan Python, serta mengakses berkas lokal. Alat peramban membantu mengakses halaman dinamis atau halaman yang memerlukan login.
+- Agen yang mendukung skill `SKILL.md` dan dapat membaca URL melalui HTTP, menjalankan Python, serta mengakses berkas lokal. Penggunaan normal tidak memerlukan otomatisasi peramban atau desktop.
 - Python 3.10 atau yang lebih baru, beserta paket dalam [requirements.txt](requirements.txt).
 - Akses jaringan ke situs web dan API Flaq, serta ke URL video yang dikembalikan.
 - Akun Flaq dan Client Key dengan izin serta saldo tersedia yang diperlukan untuk model pilihan Anda.
@@ -210,7 +210,7 @@ Templat permintaan adalah struktur awal, bukan contoh yang siap dikirim. Biarkan
 | Penyimpanan kredensial tidak tersedia | Periksa akses sistem dan buka kuncinya. Di Linux, pastikan Secret Service berjalan pada sesi pengguna saat ini. Skrip tidak beralih ke penyimpanan teks biasa. |
 | `status` berhasil tetapi pembuatan video gagal | Konfigurasi lokal tidak membuktikan adanya akses ke server. Periksa izin Key, saldo, ketersediaan model, dan parameter permintaan. |
 | Key tersimpan sudah dihapus tetapi permintaan masih terautentikasi | Periksa apakah `FLAQ_CLIENT_KEY` masih disetel di lingkungan agen. |
-| Detail model atau dokumentasi tidak lengkap | Ikuti tautan dokumentasi yang sebenarnya, naikkan batas teks jika terpotong, atau gunakan peramban agen untuk konten dinamis. Jangan menebak parameter yang tidak tersedia. |
+| Detail model atau dokumentasi tidak lengkap | Baca HTML lengkap atau gunakan `--docs-json` dengan tautan dokumentasi yang sebenarnya. Naikkan batas teks jika terpotong dan gunakan `--market` untuk menelusuri halaman katalog. Laporkan informasi yang masih belum tersedia, tanpa menebak parameter atau otomatis beralih ke pengoperasian komputer. Hanya jika benar-benar diperlukan, jelaskan kendala dan tindakan yang direncanakan sesuai [SKILL.md](SKILL.md#tool-choice-and-computer-use-authorization), lalu minta izin hanya untuk tindakan tersebut atau untuk tindakan serupa yang diperlukan selama percakapan ini. Pengguna juga dapat menolak. Meski sudah mendapat izin, tetap utamakan HTTP dan skrip. |
 | Waktu tunggu habis | Simpan ID tugas dan periksa lagi. Batas waktu tunggu lokal yang habis tidak berarti pembuatan video di server gagal atau dibatalkan. |
 | Pengiriman berakhir dengan kesalahan jaringan | Periksa apakah Flaq sudah membuat tugas sebelum mengirim ulang untuk menghindari tagihan ganda. |
 | Unduhan gagal | Simpan URL hasil, periksa direktori keluaran dan nama berkas, lalu telaah kesalahan yang dilaporkan. Berkas yang sudah ada tidak pernah ditimpa. |

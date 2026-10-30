@@ -20,7 +20,7 @@ Flaq model detail pages currently expose public specifications in this dedicated
 <script id="flaq-model-public-spec" type="application/json">…</script>
 ```
 
-This is neither an `application/ld+json` SEO schema nor a generation endpoint. Extract the node's text with an HTML parser and parse it as JSON; in a browser, read its `textContent`. Do not execute page scripts to interpret JSON or mistake framework hydration data for API documentation.
+This is neither an `application/ld+json` SEO schema nor a generation endpoint. Extract the node's text from the raw HTML with an HTML parser and parse it as JSON. Do not execute page scripts to interpret JSON or mistake framework hydration data for API documentation.
 
 | Field | Purpose and limitations |
 | --- | --- |
@@ -60,6 +60,8 @@ Each `pricing` entry may contain `when` conditions, `price`, `originalPrice`, an
 
 ## Incomplete page extraction
 
-Text retrieval tools may omit JSON scripts or hidden API sections. Read the full HTML of the same page or open its API tab in a browser, then follow the official documentation link. Do not invent a public raw Markdown URL from the detail page URL.
+Text retrieval tools may omit JSON scripts or hidden API sections. Read the full HTML of the same page with `read_page.py`; the API section is rendered in HTML even when visually hidden, so clicking the tab is unnecessary. Follow the official documentation link and read its server-rendered HTML or use `--docs-json` for Markdown from `/api/docs/`. The document's `page` value must come from the actual Docs link, not a model ID or a guessed slug.
+
+For market pagination and filters, use `--market` rather than browser controls. The public lookup returns model IDs and pricing records, not verified detail-page URLs; follow actual links for details and cross-check the exact operation. See [scripts.md](scripts.md) for both direct interface commands. A missing field, access restriction, or fetch failure is not permission for computer use; follow the necessity and authorization rules in [SKILL.md](../SKILL.md#tool-choice-and-computer-use-authorization).
 
 Search indexes and cached pages may lag behind deployment. When the market, detail page, specification, and Docs conflict, re-fetch the selected page and related documentation. Do not guess generation or billing parameters while conflicts remain. The host does not need the Flaq source repository, and local source code is not a substitute for current online information.

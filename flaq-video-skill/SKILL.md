@@ -1,11 +1,23 @@
 ---
 name: flaq-video-skill
-description: Generate, edit, or upscale videos through Flaq APIs. Discover models in the Flaq Model Market, read model specifications, pricing, API examples, and detailed documentation, then select a model, submit a task, poll its status, and deliver the video. Use for Flaq video generation, image- or video-guided creation, video model comparisons, and resuming existing video tasks.
+description: Generate, edit, or upscale videos through Flaq APIs using direct HTTP and scripts, without computer use by default. Discover models in the Flaq Model Market, read model specifications, pricing, API examples, and detailed documentation, then select a model, submit a task, poll its status, and deliver the video. Use for Flaq video generation, image- or video-guided creation, video model comparisons, and resuming existing video tasks.
 ---
 
 # Flaq Video Skill
 
 Read current model information from Flaq's public website and call its video APIs using the host agent's HTTP, execution, and file tools. This skill does not depend on a dedicated CLI, local service, or local model catalog, and does not require installing Flaq CLI. The request protocol is independent of the host's HTTP tool.
+
+## Tool choice and computer-use authorization
+
+Use direct URL retrieval, HTTP requests, and the included scripts by default, including on the first generation request. Read user-supplied model and Docs URLs directly before unrelated discovery. Public model information, prices, and Docs require no API Key; only generation and task queries require the Key. Do not use browser or desktop automation to read information already available through HTML or public JSON endpoints.
+
+Model specifications and API examples are present in detail-page HTML even when the API tab is visually hidden. Docs provide server-rendered text and a public Markdown JSON endpoint. Market filtering and pagination have a public lookup endpoint. Use these direct paths as described in [references/scripts.md](references/scripts.md); a dynamic interface does not imply a need for computer use.
+
+Missing dependencies, truncated text, an HTTP/network error, or a missing field do not authorize switching to computer use. Check the relevant direct path, URL, text limit, and access requirements; report unresolved blockers instead of guessing or repeatedly trying equivalent requests. Do not install dependencies automatically.
+
+Only consider computer use when essential information cannot be obtained directly and a specific browser/desktop action can resolve the blocker. Before any such tool call, explain what is missing, why direct reading cannot obtain it, and the proposed actions. Ask whether the user authorizes **only this necessary operation**, **similar necessary operations within this conversation**, or **neither**. Wait for explicit authorization; an available or logged-in browser is not authorization. If permission is unclear, clarify its scope.
+
+Track the approved scope within the conversation. Single-operation permission ends when that operation finishes; conversation permission covers only similar necessary actions and expires with this conversation. Honor revocation and request new permission for actions outside the approved scope. Even with permission, recheck necessity and prefer HTTP/scripts whenever they can complete the work. Use the minimum approved computer interaction, then return to the API workflow. Computer-use permission does not authorize paid generation or expand its scope. If permission is declined, report the blocker and stop dependent work.
 
 ## Quick workflow
 
@@ -13,8 +25,8 @@ Read [references/scripts.md](references/scripts.md) on first use or when you nee
 
 For outfit showcases from existing try-on images, UGC ads, product demonstrations, or image animation, first read [scenarios/index.md](scenarios/index.md) and only the matching guide. It provides required inputs, capability checks, and prompts with source videos. Apply the model priority and API verification below; gallery examples do not define API schemas or authorize generation. The outfit workflow starts with a completed outfit image, not separate person and garment images.
 
-1. Run `python3 scripts/read_page.py 'https://flaq.ai/model-market/'` to discover model links, or read the detail page supplied by the user directly. If no model is specified, follow the Seedance → Wan priority below.
-2. Read the selected detail page and inspect `public_spec`, `code_blocks`, and `docs_links`. Use the same script to read the actual documentation link, preserving its `/docs?page=...` query. Do not guess routes. Increase `--text-limit` if text is truncated; use the host browser for dynamic content.
+1. Read the model or Docs URL supplied by the user directly. Otherwise, run `python3 scripts/read_page.py 'https://flaq.ai/model-market/'` to discover actual model links; use `python3 scripts/read_page.py --market --media-type video` for filtering and pagination. If no model is specified, follow the Seedance → Wan priority below.
+2. Read the selected detail page and inspect `public_spec`, `code_blocks`, and `docs_links`. Read the actual documentation link with the same script, using `--docs-json` for Markdown or the default HTML mode, preserving its `/docs?page=...` query. Do not guess routes. Increase `--text-limit` if text is truncated; no API-tab click or browser rendering is needed for this content.
 3. Run `python3 scripts/credentials.py status`. If no Key is configured, ask the user to run `python3 scripts/credentials.py set` in their own terminal. They enter it once, and it is saved in the system credential store. Never request, print, or copy the Key into the conversation.
 4. Copy [templates/request.json](templates/request.json) into the working directory and fill in the actual model ID and required parameters from current documentation. Use [templates/files.json](templates/files.json) for local files only when the documentation confirms multipart support.
 5. Once the user has authorized this generation, submit with `python3 scripts/video_request.py submit --request /path/to/request.json --confirmed`. Immediately record the returned task ID, query with `get` or `wait`, then return the result link or save it with `download`.
@@ -58,7 +70,7 @@ For each selected candidate, cross-check the structured specification, API examp
 - Resolution, aspect ratio, output duration, audio, and other options relevant to the user.
 - Pricing and billing units for the chosen configuration. A listing's starting price is not the final task price; explain when matching rules are insufficient for an accurate estimate.
 
-If only a summary is available, fetch the full HTML or inspect the API section and linked documentation in a browser. If essential parameters, availability, or request examples remain unavailable, explain exactly what is missing and stop before submission. Do not guess endpoints or borrow parameters from another model. Re-fetch and verify conflicting sources; ask the user about unresolved conflicts rather than using paid requests to experiment.
+If only a summary is available, fetch the full HTML and read the linked documentation directly, using the Docs JSON mode where appropriate. If essential parameters, availability, or request examples remain unavailable, explain exactly what is missing and stop before submission. Any proposed computer use must meet the necessity and authorization rules above. Do not guess endpoints or borrow parameters from another model. Re-fetch and verify conflicting sources; ask the user about unresolved conflicts rather than using paid requests to experiment.
 
 ## 2. Prepare the request and authentication
 

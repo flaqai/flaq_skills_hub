@@ -39,7 +39,30 @@ Output fields:
 - `text`: page text, limited to 30000 characters by default. If `text_truncated` is true, increase `--text-limit` and read again.
 - `public_spec_parse_error`: a specification was found but could not be parsed; inspect the original page.
 
-The script reads one page, does not execute JavaScript or bypass login, and does not guarantee that the entire market catalog is loaded. Check pagination or use the host browser's filters when candidates are missing. If no model documentation link is found, locate it through the Docs navigation. For pages requiring login, use the user's authorized browser session; do not send an API Key to webpages. Report unavailable essential information rather than replacing it with cached assumptions, guesses, or local model configuration.
+The script reads one page and does not execute JavaScript or bypass login. Detail-page HTML includes public specifications and API examples even when the API tab is visually hidden; Docs HTML includes the document body. Read this content directly without clicking tabs. The first market HTML page is not the entire catalog; use the public lookup below for filters and pagination. If no model documentation link is found, read the official Docs/navigation directly and do not invent a slug. Report unavailable essential information rather than replacing it with cached assumptions, guesses, or local model configuration.
+
+### Read Docs as Markdown
+
+```sh
+python3 scripts/read_page.py 'ACTUAL_DOCS_URL_WITH_PAGE_QUERY' --docs-json
+python3 scripts/read_page.py 'ACTUAL_DOCS_URL_WITH_PAGE_QUERY' --docs-json --locale en --text-limit 60000
+```
+
+This extracts the `page` query from the supplied Docs URL and makes a credential-free `GET https://flaq.ai/api/docs/?page=...&locale=...`. The locale defaults to the URL's locale prefix, or `en` for an unprefixed URL; `--locale` overrides it. It does not derive document names from model IDs. The output includes `source_url`, the requested API `url`, `page`, `locale`, `content` (Markdown), `content_truncated`, and `restrictedFallback: false`. If truncated, increase `--text-limit` before relying on the content. A restricted response raises `DOCS_RESTRICTED`; missing or empty content raises `DOCS_CONTENT_MISSING`, rather than returning apparently usable documentation.
+
+### Filter and paginate the model market
+
+```sh
+python3 scripts/read_page.py --market --media-type video --page-num 1 --page-size 20
+python3 scripts/read_page.py --market --media-type video --page-num 2 --page-size 20
+python3 scripts/read_page.py --market --media-type video --provider bytedance
+```
+
+These are alternative lookup examples, not a required sequence. `--market` performs a credential-free `POST https://flaq.ai/api/model-market/` with `pageNum`, `pageSize`, and optional `media_type` and `provider` arrays. This POST only reads the catalog; it does not generate a video. `--media-type` and `--provider` may be repeated. Use provider values from current market data. Defaults are page 1 and page size 20, with no filters unless specified.
+
+The output includes `request`, `records`, and `total`. `total` counts model groups, not individual model IDs; each record can contain multiple models. Request subsequent pages as needed with the same filters and page size. An empty page is not proof that a model is unavailable; check the total and supplied detail/Docs links. Records may include raw pricing units; use the detail page's public pricing rules and Docs to interpret billing. Model IDs and group names are not page paths: follow actual site links instead of constructing detail URLs from these fields.
+
+All three reading modes use no API Key. No mode invokes a browser or desktop tool. Missing dependencies, HTTP errors, restricted content, and network failures do not authorize a switch to computer use. Check the reported cause and applicable direct reading mode, then report any unresolved blocker. Only a necessary computer operation may be proposed, with explicit single-operation or current-conversation permission under [SKILL.md](../SKILL.md#tool-choice-and-computer-use-authorization); even with permission, keep preferring direct HTTP and scripts. Never send an API Key to the website or these public lookup endpoints.
 
 ## Prepare a generic request
 
